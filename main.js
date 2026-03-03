@@ -79,10 +79,13 @@ document.addEventListener('click', (e) => {
   if (!bioFull) return;
 
   const isExpanded = bioFull.classList.contains('expanded');
+  const teamInfo = toggle.closest('.team-info');
 
   // Collapse all other bios
   document.querySelectorAll('.team-bio-full.expanded').forEach(bio => {
     bio.classList.remove('expanded');
+    const siblingPreview = bio.closest('.team-info').querySelector('.team-bio-preview');
+    if (siblingPreview) siblingPreview.style.display = '';
   });
   document.querySelectorAll('.team-bio-toggle.expanded').forEach(btn => {
     btn.classList.remove('expanded');
@@ -95,6 +98,9 @@ document.addEventListener('click', (e) => {
   if (!isExpanded) {
     bioFull.classList.add('expanded');
     toggle.classList.add('expanded');
+    // Hide the clamped preview so only the full bio is visible
+    const preview = teamInfo.querySelector('.team-bio-preview');
+    if (preview) preview.style.display = 'none';
     if (toggle.childNodes[0] && toggle.childNodes[0].nodeType === Node.TEXT_NODE) {
       toggle.childNodes[0].textContent = 'Close Bio ';
     }
@@ -144,23 +150,6 @@ const populateContent = () => {
     const teamGrid = document.getElementById('teamGrid');
     if (teamGrid) {
       teamGrid.innerHTML = rsiContent.team.map((member, i) => {
-        // Find the first sentence boundary (. ) after 80 characters to avoid splitting titles like Mr. or initials
-        let splitIdx = member.bio.indexOf('. ', 80);
-        let previewText = member.bio;
-        let fullText = '';
-
-        if (splitIdx !== -1) {
-          previewText = member.bio.substring(0, splitIdx + 1);
-          fullText = member.bio.substring(splitIdx + 2);
-        } else if (member.bio.length > 120) {
-          // Fallback if no period found
-          const spaceIdx = member.bio.indexOf(' ', 100);
-          if (spaceIdx !== -1) {
-            previewText = member.bio.substring(0, spaceIdx) + '...';
-            fullText = member.bio.substring(spaceIdx + 1);
-          }
-        }
-
         const credentialTags = (member.credentials || []).map(c => `<span class="credential-tag">${c}</span>`).join('');
 
         return `
@@ -172,9 +161,9 @@ const populateContent = () => {
             <h3 class="team-name">${member.name}</h3>
             <div class="team-title">${member.role}</div>
             ${credentialTags ? `<div class="team-credentials">${credentialTags}</div>` : ''}
-            <p class="team-bio-preview">${previewText}</p>
+            <p class="team-bio-preview">${member.bio}</p>
             <div class="team-bio-full" id="bio-${member.id}">
-              <p>${fullText}</p>
+              <p>${member.bio}</p>
             </div>
             <button class="team-bio-toggle" data-target="bio-${member.id}">
               Read Full Bio
