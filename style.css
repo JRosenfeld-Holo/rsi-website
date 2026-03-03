@@ -160,7 +160,18 @@ select {
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
   display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-accent);
+  flex-shrink: 0;
 }
 
 .section-title {
@@ -264,14 +275,16 @@ select {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background: var(--color-accent);
-  transition: width var(--duration-normal) var(--ease-out);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--duration-normal) var(--ease-out);
 }
 
 .nav-link:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .nav-cta {
@@ -367,10 +380,15 @@ select {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(to bottom,
-      rgba(11, 29, 58, 0.6) 0%,
-      rgba(11, 29, 58, 0.4) 50%,
-      rgba(11, 29, 58, 0.85) 100%);
+  background:
+    radial-gradient(ellipse at 50% 110%, rgba(197, 160, 89, 0.07) 0%, transparent 60%),
+    linear-gradient(
+      160deg,
+      rgba(11, 29, 58, 0.78) 0%,
+      rgba(11, 29, 58, 0.32) 40%,
+      rgba(11, 29, 58, 0.52) 70%,
+      rgba(11, 29, 58, 0.93) 100%
+    );
 }
 
 .hero-content {
@@ -1484,6 +1502,282 @@ select {
 }
 
 /* ============================================
+   SECTION DIVIDER
+   ============================================ */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-accent), transparent);
+  opacity: 0.35;
+  margin: 0;
+}
+
+/* ============================================
+   TRUST STRIP
+   ============================================ */
+.trust-strip {
+  background: var(--color-primary-dark);
+  border-top: 1px solid rgba(197, 160, 89, 0.2);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+  padding: var(--space-5) 0;
+}
+
+.trust-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.trust-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.trust-item strong {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(197, 160, 89, 0.3);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   WHY RSI / PROCESS SECTION
+   ============================================ */
+.why-rsi {
+  background: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-rsi::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.why-rsi .section-label {
+  color: var(--color-accent);
+}
+
+.why-rsi .section-title {
+  color: var(--color-text-white);
+}
+
+.why-rsi .section-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.why-rsi-header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+}
+
+.why-rsi-header .section-subtitle {
+  margin: 0 auto;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  position: relative;
+}
+
+.process-grid::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 28px);
+  right: calc(12.5% + 28px);
+  height: 1px;
+  background: linear-gradient(to right, rgba(197, 160, 89, 0.4), rgba(197, 160, 89, 0.4));
+  z-index: 0;
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.process-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-6);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-accent);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.process-step:hover .process-number {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+.process-step-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-white);
+  margin-bottom: var(--space-3);
+}
+
+.process-step-desc {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+}
+
+/* ============================================
+   LOGO GRID (replaces marquee)
+   ============================================ */
+.logo-grid-wrapper {
+  padding: var(--space-4) 0 var(--space-6);
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+}
+
+.logo-grid-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-5);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  height: 80px;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.logo-grid-item img {
+  max-width: 100%;
+  max-height: 48px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.logo-grid-item:hover {
+  border-color: rgba(197, 160, 89, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-sm);
+}
+
+.logo-grid-item:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ============================================
+   CONFIDENTIAL / NDA CARD
+   ============================================ */
+.confidential-card .project-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ============================================
+   PROJECT FILTER TABS
+   ============================================ */
+.project-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-6);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-secondary);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  background: transparent;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.filter-btn.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   TEAM CREDENTIALS
+   ============================================ */
+.team-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.credential-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  padding: 3px 10px;
+  background: rgba(197, 160, 89, 0.08);
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 1024px) {
@@ -1506,6 +1800,23 @@ select {
 
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+
+  .process-grid::before {
+    display: none;
+  }
+
+  .logo-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .trust-strip-inner {
+    gap: 0;
   }
 }
 
@@ -1608,6 +1919,24 @@ select {
   .marquee-container::before,
   .marquee-container::after {
     width: 80px;
+  }
+
+  .logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .trust-item {
+    padding: var(--space-2) var(--space-5);
+    font-size: var(--text-xs);
+  }
+
+  .trust-divider {
+    height: 18px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 }
 
@@ -1890,5 +2219,31 @@ select {
 
   .property-page-title {
     font-size: var(--text-4xl);
+  }
+}
+
+/* ============================================
+   PREFERS-REDUCED-MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-bg img {
+    animation: none;
+  }
+
+  .scroll-line {
+    animation: none;
   }
 }

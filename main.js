@@ -125,8 +125,8 @@ const populateContent = () => {
   if (rsiContent.services) {
     const servicesGrid = document.getElementById('services');
     if (servicesGrid) {
-      servicesGrid.innerHTML = rsiContent.services.map(service => `
-        <div class="service-card">
+      servicesGrid.innerHTML = rsiContent.services.map((service, i) => `
+        <div class="service-card" style="transition-delay: ${i * 100}ms">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
@@ -143,7 +143,7 @@ const populateContent = () => {
   if (rsiContent.team) {
     const teamGrid = document.getElementById('teamGrid');
     if (teamGrid) {
-      teamGrid.innerHTML = rsiContent.team.map(member => {
+      teamGrid.innerHTML = rsiContent.team.map((member, i) => {
         // Find the first sentence boundary (. ) after 80 characters to avoid splitting titles like Mr. or initials
         let splitIdx = member.bio.indexOf('. ', 80);
         let previewText = member.bio;
@@ -161,20 +161,23 @@ const populateContent = () => {
           }
         }
 
+        const credentialTags = (member.credentials || []).map(c => `<span class="credential-tag">${c}</span>`).join('');
+
         return `
-        <div class="team-card reveal">
+        <div class="team-card reveal" style="transition-delay: ${i * 100}ms">
           <div class="team-photo">
             ${member.image ? `<img src="${member.image}" alt="${member.name}" style="width:100%; height:100%; object-fit:cover; border-radius: 8px;" />` : `<span class="team-photo-initials">${member.name.split(' ').map(n => n[0]).join('')}</span>`}
           </div>
           <div class="team-info">
             <h3 class="team-name">${member.name}</h3>
             <div class="team-title">${member.role}</div>
+            ${credentialTags ? `<div class="team-credentials">${credentialTags}</div>` : ''}
             <p class="team-bio-preview">${previewText}</p>
             <div class="team-bio-full" id="bio-${member.id}">
               <p>${fullText}</p>
             </div>
             <button class="team-bio-toggle" data-target="bio-${member.id}">
-              Read Full Bio 
+              Read Full Bio
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
           </div>
@@ -186,20 +189,75 @@ const populateContent = () => {
       document.querySelectorAll('#teamGrid .reveal').forEach(el => revealObserver.observe(el));
     }
   }
-  // Logos Marquee
-  const marqueeTrack = document.getElementById('marqueeTrack');
-  if (marqueeTrack && logos && logos.length > 0) {
-    const renderLogos = () => logos.map(src => `
-      <div class="marquee-item">
-        <img src="${src}" alt="Client Logo" />
+  // Logos Grid (static)
+  const logoGrid = document.getElementById('logoGrid');
+  if (logoGrid && logos && logos.length > 0) {
+    logoGrid.innerHTML = logos.map(src => `
+      <div class="logo-grid-item">
+        <img src="${src}" alt="Client Logo" loading="lazy" />
       </div>
     `).join('');
-
-    // Render twice for seamless loop
-    marqueeTrack.innerHTML = renderLogos() + renderLogos();
   }
 };
 populateContent();
+
+// ---------- Stat Counter Animation ----------
+const animateCounter = (el, target, prefix, suffix) => {
+  const duration = 1500;
+  const start = performance.now();
+  const update = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = prefix + Math.floor(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+};
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      animateCounter(el, target, prefix, suffix);
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number[data-count]').forEach(el => statObserver.observe(el));
+
+// ---------- Project Filter Tabs ----------
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.removeAttribute('hidden');
+      } else {
+        card.setAttribute('hidden', '');
+      }
+    });
+  });
+});
+
+// ---------- Hero Scroll Indicator Auto-Hide ----------
+const heroScroll = document.querySelector('.hero-scroll');
+const heroSection = document.querySelector('.hero');
+if (heroScroll && heroSection) {
+  const heroScrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      heroScroll.style.opacity = entry.isIntersecting ? '1' : '0';
+      heroScroll.style.pointerEvents = entry.isIntersecting ? '' : 'none';
+      heroScroll.style.transition = 'opacity 400ms ease';
+    });
+  }, { threshold: 0.1 });
+  heroScrollObserver.observe(heroSection);
+}
 
 // ---------- Contact Form Handling ----------
 const contactForm = document.getElementById('contactForm');
