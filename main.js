@@ -202,29 +202,63 @@ populateContent();
 
 // ---------- Contact Form Handling ----------
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  const formData = new FormData(contactForm);
-  const data = Object.fromEntries(formData.entries());
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
 
-  // Show success state
-  const submitBtn = contactForm.querySelector('.btn');
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = `
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    Message Sent!
-  `;
-  submitBtn.style.background = '#22C55E';
-  submitBtn.disabled = true;
+    const submitBtn = contactForm.querySelector('.btn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Sending...
+    `;
+    submitBtn.disabled = true;
 
-  setTimeout(() => {
-    submitBtn.innerHTML = originalText;
-    submitBtn.style.background = '';
-    submitBtn.disabled = false;
-    contactForm.reset();
-  }, 3000);
-});
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Show success state
+      submitBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Message Sent!
+      `;
+      submitBtn.style.background = '#22C55E';
+
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+        contactForm.reset();
+      }, 3000);
+    } catch (error) {
+      console.error('Submission error:', error);
+      submitBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Error Sending
+      `;
+      submitBtn.style.background = '#EF4444';
+
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
+        submitBtn.disabled = false;
+      }, 3000);
+    }
+  });
+}
 
 // ---------- Newsletter Form Handling ----------
 const newsletterForm = document.getElementById('newsletterForm');
@@ -244,10 +278,10 @@ newsletterForm.addEventListener('submit', (e) => {
 
 // ---------- Parallax-lite Hero ----------
 window.addEventListener('scroll', () => {
-  const hero = document.querySelector('.hero-bg img');
-  if (hero) {
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
     const scrolled = window.scrollY;
-    hero.style.transform = `scale(${1.05 + scrolled * 0.0001}) translateY(${scrolled * 0.15}px)`;
+    heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
   }
 }, { passive: true });
 

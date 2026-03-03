@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Details | Retail Sites International, Inc.</title>
+    <meta name="description" content="View property details, investment highlights, and contact brokers." />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/index.html" class="nav-logo">
+                <img src="/rsi-logo.png" alt="RSI Logo" class="nav-logo-img" />
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/index.html#home" class="nav-link">Home</a>
+                <a href="/index.html#about" class="nav-link">About Us</a>
+                <a href="/index.html#services" class="nav-link">Services</a>
+                <a href="/index.html#projects" class="nav-link">Projects &amp; Listings</a>
+                <a href="/index.html#team" class="nav-link">Team</a>
+                <a href="/index.html#contact" class="nav-cta">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+       HERO / BREADCRUMB
+       ============================================ -->
+    <header class="property-hero" id="propHero" style="background-image: url('/images/waterfront.png');">
+        <div class="property-hero-overlay"></div>
+        <div class="container relative h-full">
+            <div class="breadcrumb">
+                <a href="/index.html#projects" class="breadcrumb-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Back to Listings
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+       PROPERTY DETAILS GRID
+       ============================================ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="property-grid">
+
+                <!-- LEFT COLUMN: Content -->
+                <div class="property-content reveal">
+                    <div class="property-header">
+                        <h1 class="property-page-title" id="propTitle">Waterfront Restaurant and Bar</h1>
+                        <p class="property-location" id="propLocation">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>Southeast Broward County, FL</span>
+                        </p>
+                    </div>
+
+                    <div class="property-specs">
+                        <h3 class="section-title text-2xl">Property Overview</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Price</span>
+                                <span class="spec-value" id="propPrice">Unpriced</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Cap Rate / Sales</span>
+                                <span class="spec-value cap-rate" id="propCap">Gross Sales > $3M</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Building SF</span>
+                                <span class="spec-value" id="propSF">5,000 SF</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Land Size</span>
+                                <span class="spec-value" id="propLand">N/A</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Lease Type</span>
+                                <span class="spec-value" id="propLease">10-year lease</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Term Expiration</span>
+                                <span class="spec-value" id="propTerm">TBD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-description">
+                        <h3 class="section-title text-2xl">Description</h3>
+                        <p id="propDesc">
+                            Fully equipped F/F&E, 20-foot ceilings, 10-year lease. Highly confidential operating
+                            restaurant.
+                        </p>
+                    </div>
+
+                    <div class="property-map">
+                        <h3 class="section-title text-2xl">Location</h3>
+                        <div class="map-container">
+                            <!-- Google Maps iframe placeholder -->
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115206.58287661005!2d-80.28581023773173!3d26.13600676449197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d900696a4cead5%3A0xc392fcce6df0fb9d!2sBroward%20County%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Sticky Contact Card -->
+                <div class="property-sidebar reveal">
+                    <div class="sticky-contact-card">
+                        <h3 class="sidebar-title">Broker Contact</h3>
+                        <p class="sidebar-subtitle">Reach out directly for specialized information on this property.</p>
+
+                        <div class="brokers-list">
+                            <div class="broker-info">
+                                <h4 class="broker-name">Nathan A. Werner</h4>
+                                <div class="broker-contact-row">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    <a href="tel:9545550183">(954) 555-0183</a>
+                                </div>
+                                <div class="broker-contact-row">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                    <a href="mailto:nathan@retailsitesintl.com">nathan@retailsitesintl.com</a>
+                                </div>
+                            </div>
+                            <div class="broker-divider"></div>
+                            <div class="broker-info">
+                                <h4 class="broker-name">Paul Werner</h4>
+                                <div class="broker-contact-row">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    <a href="tel:9545550184">(954) 555-0184</a>
+                                </div>
+                                <div class="broker-contact-row">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                    <a href="mailto:paul@retailsitesintl.com">paul@retailsitesintl.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-action" id="actionContainer">
+                            <!-- Dynamically populated CTA -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+       NDA MODAL
+       ============================================ -->
+    <div class="modal-overlay" id="ndaModal">
+        <div class="modal-content" id="modalContentWrapper">
+            <!-- Form State -->
+            <div id="ndaFormState">
+                <button class="modal-close" id="closeModal">&times;</button>
+                <h2 class="section-title text-3xl" style="color: var(--color-primary);">Confidentiality Agreement (NDA)
+                </h2>
+                <p style="margin-bottom: var(--space-4); color: var(--color-secondary);">Please complete the form below
+                    to
+                    access confidential location and financial details.</p>
+                <form class="form-grid" id="ndaForm" novalidate>
+                    <div class="form-group full-width"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                        <div>
+                            <label class="form-label" for="ndaName">Full Name *</label>
+                            <input class="form-input" type="text" id="ndaName" required />
+                        </div>
+                        <div>
+                            <label class="form-label" for="ndaCompany">Company *</label>
+                            <input class="form-input" type="text" id="ndaCompany" required />
+                        </div>
+                    </div>
+                    <div class="form-group full-width"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                        <div>
+                            <label class="form-label" for="ndaPhone">Phone Number *</label>
+                            <input class="form-input" type="tel" id="ndaPhone" required />
+                        </div>
+                        <div>
+                            <label class="form-label" for="ndaEmail">Email Address *</label>
+                            <input class="form-input" type="email" id="ndaEmail" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="form-label">NDA Terms & Conditions</label>
+                        <div class="nda-terms-scroll"
+                            style="height: 120px; overflow-y: auto; background: #f8fafc; border: 1px solid var(--color-border-light); padding: var(--space-4); font-size: 12px; color: var(--color-secondary); border-radius: var(--radius-md);">
+                            <p style="margin-bottom: 8px;"><strong>1. Confidential Information:</strong> The Receiving
+                                Party acknowledges that they will receive confidential and proprietary details (the
+                                "Information") regarding the listed property. This includes but is not limited to
+                                financials, tenant leases, and exact location data.</p>
+                            <p style="margin-bottom: 8px;"><strong>2. Non-Disclosure:</strong> The Receiving Party
+                                agrees to hold all Information in strict confidence and shall not disclose it to any
+                                third parties without prior written consent from Retail Sites International, Inc.</p>
+                            <p style="margin-bottom: 8px;"><strong>3. Use of Information:</strong> The Information shall
+                                be used solely for the purpose of evaluating the potential purchase or lease of the
+                                property.</p>
+                            <p style="margin-bottom: 8px;"><strong>4. Non-Circumvention:</strong> The Receiving Party
+                                agrees not to directly or indirectly contact the owner, employees, or tenants of the
+                                property regarding this transaction.</p>
+                            <p><strong>5. Return of Materials:</strong> Upon request, all Information shall be promptly
+                                returned or destroyed.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width"
+                        style="display: flex; align-items: flex-start; gap: var(--space-2); margin-bottom: var(--space-4);">
+                        <input type="checkbox" id="ndaAgree" required
+                            style="margin-top: 4px; accent-color: var(--color-primary);" />
+                        <label for="ndaAgree"
+                            style="font-size: var(--text-sm); color: var(--color-secondary); line-height: 1.4; cursor: pointer;">
+                            I agree to the terms of the Confidentiality Agreement, which acts as my digital signature.
+                        </label>
+                    </div>
+
+                    <div class="form-submit full-width" style="margin-top:0;">
+                        <button type="submit" class="btn btn-gold w-full" id="submitNdaBtn"
+                            style="justify-content:center;">
+                            Sign &amp; Request Details
+                        </button>
+                    </div>
+                    <div id="formError"
+                        style="color: red; font-size: var(--text-sm); margin-top: var(--space-2); display: none;">Please
+                        fill out all required fields and accept the terms.</div>
+                </form>
+            </div>
+
+            <!-- Success State -->
+            <div id="ndaSuccessState" style="display: none; text-align: center; padding: var(--space-8) 0;">
+                <button class="modal-close" id="closeSuccessModal">&times;</button>
+                <div
+                    style="width: 64px; height: 64px; background: rgba(197, 160, 89, 0.1); color: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-6);">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h2 class="section-title text-3xl" style="color: var(--color-primary); margin-bottom: var(--space-2);">
+                    NDA Executed</h2>
+                <p style="color: var(--color-secondary); margin-bottom: var(--space-6);">Thank you. A secure link to
+                    download the confidential offering memorandum has been sent to your inbox.</p>
+                <button class="btn btn-gold-outline"
+                    onclick="document.getElementById('ndaModal').classList.remove('active');"
+                    style="margin: 0 auto;">Return to Property</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+       FOOTER (Simplified for template)
+       ============================================ -->
+    <footer class="footer mt-auto" style="padding-top: var(--space-8); padding-bottom: var(--space-4);">
+        <div class="container text-center">
+            <div class="footer-copyright">
+                &copy; 2026 Retail Sites International, Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="/main.js"></script>
+    <script>
+        // --- DYNAMIC DATA LOGIC ---
+        const listingsData = {
+            waterfront: {
+                title: "Waterfront Restaurant and Bar (Business Only)",
+                location: "Southeast Broward County, FL",
+                price: "Unpriced - NDA Required",
+                cap: "Gross Sales > $3M",
+                sf: "5,000 SF + Waterfront Patio",
+                land: "N/A",
+                lease: "10-year lease",
+                term: "TBD",
+                desc: "Fully equipped F/F&E, 20-foot ceilings, 10-year lease. Highly confidential operating restaurant. Please complete the NDA process to unlock location specifics and financial trailing data.",
+                image: "/images/waterfront.png",
+                nda: true,
+                mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115206.58287661005!2d-80.28581023773173!3d26.13600676449197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d900696a4cead5%3A0xc392fcce6df0fb9d!2sBroward%20County%2C%20FL!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            },
+            popshelf: {
+                title: "pOpshelf NNN Investment (Dollar General Division)",
+                location: "9465 GA-5, Douglasville, GA 30135",
+                price: "$5,000,000",
+                cap: "6.95% Cap Rate",
+                sf: "14,333 SF",
+                land: "1.376 Acres",
+                lease: "Absolute NNN (No Landlord Responsibilities)",
+                term: "10/31/2027",
+                desc: "Absolute NNN lease. Sublease from Walgreens, primary term expiration 10/31/2027. Dollar General guarantees the sublease. Excellent visibility on GA-5 with high traffic counts. Turn-key passive investment opportunity.",
+                image: "/images/retail.png",
+                nda: false,
+                mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.591605634685!2d-84.7571253!3d33.7712128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f521191a2eb367%3A0xbd7a6e76cf00305e!2s9465%20Hwy%205%2C%20Douglasville%2C%20GA%2030135!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            }
+        };
+
+        // Get ID from URL or default to waterfront
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id') || 'waterfront';
+        const data = listingsData[id] || listingsData.waterfront;
+
+        // Populate data
+        document.getElementById('propHero').style.backgroundImage = `url('${data.image}')`;
+        document.getElementById('propTitle').textContent = data.title;
+        document.querySelector('#propLocation span').textContent = data.location;
+        document.getElementById('propPrice').textContent = data.price;
+        document.getElementById('propCap').textContent = data.cap;
+        document.getElementById('propSF').textContent = data.sf;
+        document.getElementById('propLand').textContent = data.land;
+        document.getElementById('propLease').textContent = data.lease;
+        document.getElementById('propTerm').textContent = data.term;
+        document.getElementById('propDesc').textContent = data.desc;
+        document.querySelector('.map-container iframe').src = data.mapSrc;
+
+        // Manage CTA Logic
+        const actionContainer = document.getElementById('actionContainer');
+        if (data.nda) {
+            actionContainer.innerHTML = `
+        <button class="btn btn-gold w-full" id="openModalBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download NDA to View Details
+        </button>
+      `;
+            // Bind modal logic
+            const modal = document.getElementById('ndaModal');
+            document.getElementById('openModalBtn').addEventListener('click', () => {
+                document.getElementById('ndaFormState').style.display = 'block';
+                document.getElementById('ndaSuccessState').style.display = 'none';
+                document.getElementById('ndaForm').reset();
+                document.getElementById('formError').style.display = 'none';
+                modal.classList.add('active');
+            });
+            document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('active'));
+            document.getElementById('closeSuccessModal').addEventListener('click', () => modal.classList.remove('active'));
+
+            // Handle form submission
+            document.getElementById('ndaForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('ndaName').value;
+                const company = document.getElementById('ndaCompany').value;
+                const phone = document.getElementById('ndaPhone').value;
+                const email = document.getElementById('ndaEmail').value;
+                const agree = document.getElementById('ndaAgree').checked;
+
+                if (!name || !company || !phone || !email || !agree) {
+                    document.getElementById('formError').style.display = 'block';
+                    return;
+                }
+                document.getElementById('formError').style.display = 'none';
+
+                const btn = document.getElementById('submitNdaBtn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Submitting...';
+                btn.disabled = true;
+
+                try {
+                    const response = await fetch('/api/submit-nda', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name, company, phone, email,
+                            propertyTitle: data.title
+                        })
+                    });
+
+                    if (response.ok) {
+                        document.getElementById('ndaFormState').style.display = 'none';
+                        document.getElementById('ndaSuccessState').style.display = 'block';
+                    } else {
+                        throw new Error('Server returned error');
+                    }
+                } catch (error) {
+                    document.getElementById('formError').innerText = "An error occurred submitting your request. Please try again or contact the broker directly.";
+                    document.getElementById('formError').style.display = 'block';
+                    console.error("NDA Submission Error:", error);
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            });
+        } else {
+            actionContainer.innerHTML = `
+        <a href="#contact" class="btn btn-gold w-full" style="justify-content:center;">
+          Contact Broker
+        </a>
+      `;
+        }
+
+        // Make navbar dark for subpages
+        document.querySelector('.navbar').classList.add('scrolled');
+    </script>
+</body>
+
+</html>
