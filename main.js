@@ -279,6 +279,7 @@ newsletterForm.addEventListener('submit', (e) => {
 
 // ---------- Parallax-lite Hero ----------
 window.addEventListener('scroll', () => {
+  if (window.innerWidth < 1024) return;
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) {
     const scrolled = window.scrollY;

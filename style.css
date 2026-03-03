@@ -932,6 +932,9 @@ select {
   gap: var(--space-12);
   animation: marquee 100s linear infinite;
   width: max-content;
+  width: -webkit-max-content;
+  height: 80px;
+  will-change: transform;
 }
 
 @keyframes marquee {
