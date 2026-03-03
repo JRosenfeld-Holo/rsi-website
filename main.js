@@ -54,10 +54,11 @@ const revealElements = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      // Stagger animation for elements that appear together
+      // Stagger animation for elements that appear together, but disable on mobile to prevent staggering glitches
+      const delay = window.innerWidth > 768 ? index * 100 : 0;
       setTimeout(() => {
         entry.target.classList.add('visible');
-      }, index * 100);
+      }, delay);
       revealObserver.unobserve(entry.target);
     }
   });

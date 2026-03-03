@@ -185,6 +185,7 @@ select {
   transform: translateY(30px);
   transition: opacity var(--duration-slow) var(--ease-out),
     transform var(--duration-slow) var(--ease-out);
+  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -465,6 +466,18 @@ select {
   }
 }
 
+@keyframes heroScrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 @keyframes fadeInDown {
   from {
     opacity: 0;
@@ -541,7 +554,7 @@ select {
   font-size: var(--text-xs);
   letter-spacing: 2px;
   text-transform: uppercase;
-  animation: fadeInUp 0.8s var(--ease-out) 1s both;
+  animation: heroScrollFadeIn 0.8s var(--ease-out) 1s both;
 }
 
 .scroll-line {
